@@ -21,7 +21,7 @@
 
 ### Why it is built
 
-Artificial intelligence project that is built specifically to contribute to AI101 event that is established by both IEEE (Institute of Electrical and Electronics Engineers) student branch AAST (Arab Academy for Science, Technology & Maritime Transport) and INSAT (National Institute of Applied Science and Technology).
+Artificial intelligence project that is built specifically to contribute to AI101 multinational event that is established by both IEEE (Institute of Electrical and Electronics Engineers) student branch AAST (Arab Academy for Science, Technology & Maritime Transport) in Egypt and INSAT (National Institute of Applied Science and Technology) in Tunisia.
 
 ### Brief
 
