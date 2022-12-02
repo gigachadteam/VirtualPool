@@ -317,7 +317,7 @@ while GAME_ON:
         print("GG YOU WIN")
         GAME_ON = False
     # Display the objects
-    space.debug_draw(drawOptions)
+    # space.debug_draw(drawOptions)
     pygame.display.update()
 
 
