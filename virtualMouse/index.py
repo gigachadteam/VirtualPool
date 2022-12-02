@@ -81,7 +81,6 @@ while True:
         
         if finger[1] == 1 and finger[2] == 0:  # Checks to see if the pointing finger is up and thumb finger is down
             x3 = np.interp(x1, (75, 640 - 75), (0, wScr))  # Converts the width of the window relative to the screen width
-            print(x3)
             y3 = np.interp(y1, (75, 480 - 75), (0, hScr))  # Converts the height of the window relative to the screen height
             
             cX = pX + (x3 - pX) / 7  # Stores previous x locations to update current x location

@@ -31,6 +31,8 @@ The main aim is to use body movements and hand gestures as input to this program
 
 modular python project that contains hand recognition and tracking logic and 8 ball pool to use orders that that user make using this hand.
 
+[Back To The Top](#table-of-contents)
+
 ---
 
 ## Game Play Photos
@@ -38,6 +40,8 @@ modular python project that contains hand recognition and tracking logic and 8 b
 <div align="center">
 <img src="gameAssets/readme/gamePhoto.png" height="150">
 </div>
+
+[Back To The Top](#table-of-contents)
 
 ---
 
@@ -50,6 +54,8 @@ modular python project that contains hand recognition and tracking logic and 8 b
 -   pygame
 -   pymunk
 
+[Back To The Top](#table-of-contents)
+
 ---
 
 ## Setting up the environment
@@ -61,7 +67,7 @@ modular python project that contains hand recognition and tracking logic and 8 b
 pip install opencv-python mediapipe numpy autopy pygame pymunk
 ```
 
-[Back To The Top](#read-me-template)
+[Back To The Top](#table-of-contents)
 
 ---
 
@@ -69,4 +75,4 @@ pip install opencv-python mediapipe numpy autopy pygame pymunk
 
 [MIT License](LICENSE)
 
-[Back To The Top](#read-me-template)
+[Back To The Top](#table-of-contents)
