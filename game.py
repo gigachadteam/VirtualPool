@@ -238,11 +238,13 @@ while GAME_ON:
 
     # Note: for handling
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN and TAKING_SHOT:
-            POWERING_UP = True
+        if event.type == pygame.KEYDOWN and TAKING_SHOT:
+            if event.key == pygame.K_SPACE:
+                POWERING_UP = True
                 
-        if event.type == pygame.MOUSEBUTTONUP and TAKING_SHOT:
-            POWERING_UP = False
+        if event.type == pygame.KEYUP and TAKING_SHOT:
+            if event.key == pygame.K_SPACE:
+                POWERING_UP = False
 
         if event.type == pygame.QUIT:
             GAME_ON = False
