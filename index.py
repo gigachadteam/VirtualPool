@@ -10,8 +10,6 @@ import numpy as np
 # It includes functions for controlling the keyboard and mouse
 import autopy
 
-
-# Game Meta Data
 DIM_WIDTH = 1200
 DIM_HEIGHT = 678
 BOTTOM_PANEL = 50
@@ -171,7 +169,6 @@ draw = mediapipe.solutions.drawing_utils
 wScr, hScr = autopy.screen.size()  
 pX, pY = 0, 0  # Previous x and y location
 cX, cY = 0, 0  # Current x and y location
-# positionX, positionY = 0,0
 
 # draw hand connection marks
 def handLandmarks(colorImg):
@@ -320,7 +317,6 @@ while GAME_ON:
     # space.debug_draw(drawOptions)
     pygame.display.update()
 
-
     # hand detection window
     check, img = cap.read() 
     imgRGB = cv.cvtColor(img, cv.COLOR_BGR2RGB)
@@ -328,29 +324,30 @@ while GAME_ON:
     
     # if lenght is not equal to zero (to avoid crashing in the first frame)
     if len(lmList) != 0:
-        x1, y1 = lmList[8][1:]  # Gets index 8s x and y values (skips index value because it starts from 1)
-        x2, y2 = lmList[12][1:]  # Gets index 12s x and y values (skips index value because it starts from 1)
+        xIndex, yIndex = lmList[8][1:]  # Gets index 8s x and y values (skips index value because it starts from 1)
+        xMiddle, yMiddle = lmList[12][1:]  # Gets index 12s x and y values (skips index value because it starts from 1)
+        xThumb, yThumb = lmList[4][1:]  # Gets index 12s x and y values (skips index value because it starts from 1)
         # Calling the fingers function to check which fingers are up
         finger = fingers(lmList)  
 
         
         if finger[1] == 1 and finger[2] == 0:  # Checks to see if the pointing finger is up and thumb finger is down
-            x3 = np.interp(x1, (75, 640 - 75), (0, wScr))  # Converts the width of the window relative to the screen width
-            y3 = np.interp(y1, (75, 480 - 75), (0, hScr))  # Converts the height of the window relative to the screen height
+            x3 = np.interp(xIndex, (75, 640 - 75), (0, wScr))  # Converts the width of the window relative to the screen width
+            y3 = np.interp(yIndex, (75, 480 - 75), (0, hScr))  # Converts the height of the window relative to the screen height
             
             cX = pX + (x3 - pX) / 7  # Stores previous x locations to update current x location
             cY = pY + (y3 - pY) / 7  # Stores previous y locations to update current y location
             
             autopy.mouse.move(wScr-cX, cY)  # Function to move the mouse to the x3 and y3 values (wSrc inverts the direction)
             pX, pY = cX, cY  # Stores the current x and y location as previous x and y location for next loop
-            # if pX != 0 and pY != 0:
-            #     positionX, positionY = pX,pY 
+            img = cv.circle(img, (xIndex, yIndex), 15, (0,0,255), -1)
+            img = cv.putText(img, 'Mouse Movment', (xIndex, int(yIndex - 20)), cv.FONT_HERSHEY_COMPLEX, 1, (0,0,255), 1, cv.LINE_AA)
 
         # pointer down / thumb up => left click
         if finger[1] == 0 and finger[0] == 1:  
             autopy.mouse.click()
-            
-            # img = cv.circle(img, (int(positionX//2.4), int(positionY//1.8)), 15, (0,255,255), -1)
+            img = cv.circle(img, (xThumb, yThumb), 15, (0,255,255), -1)
+            img = cv.putText(img, 'Click', (xThumb, int(yThumb - 20)), cv.FONT_HERSHEY_COMPLEX, 1, (0,255,255), 1, cv.LINE_AA)
             
     # display image on Webcam window
     cv.imshow("Webcam", img)
